@@ -35,7 +35,9 @@ getByte_ARM:
     @ Save caller's registers on the stack
     push {r4-r11, ip, lr}
 
-    MUL  r1, r0, #8
+	@ r0 = x, r1 = n, r2 = 8
+	MOV  r2, #8
+    MUL  r1, r0, r2
     ASR  r0, r0, r1
     AND  r0, 0xFF
     
