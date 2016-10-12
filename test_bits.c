@@ -214,7 +214,7 @@ printf("Passed Test Cases for logicalShift\n");
 //Test Cases for bang
 assert(bang(3)==test_bang(3));
 assert(bang(0)==test_bang(0));
-assert(bang(-5)==test_fitsBits(-5));
+assert(bang(-5)==test_bang(-5));
 assert(bang(0xFFFFFFFF)==test_bang(0xFFFFFFFF));
 assert(bang(0x80000000)==test_bang(0x80000000));
 printf("Passed Test Cases for bang\n");
