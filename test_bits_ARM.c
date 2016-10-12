@@ -126,6 +126,8 @@ printf("Passed Test Cases for logicalShift\n");
 //printf("Passed Test Cases for bitCount\n");
 
 //Test Cases for fitsBits
+printf("\nfitsBits_ARM(5,3): %d\n", fitsBits_ARM(5,3));
+printf("\ntest_fitsBits_ARM(5,3): %d\n", test_fitsBits_ARM(5,3));
 assert(fitsBits_ARM(5,3)==test_fitsBits_ARM(5,3));
 assert(fitsBits_ARM(-4,3)==test_fitsBits_ARM(-4,3));
 printf("Passed Test Cases for fitsBits\n");
