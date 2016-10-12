@@ -60,7 +60,7 @@ logicalShift_ARM:
     push {r4-r11, ip, lr}
 
 	@ r0 = x, r1 = n, r2 = isZero, r3 = mask, 
-	@ r4 = 31+isZero, r5 = 0x10000000, r6 = ~0, r7 = n + ~0
+	@ r4 = 31+isZero, r5 = 0x10000000, r6 = ~0, r7 = n + ~0, r8 = 1
 	
     ORR  r2, r1, #0		@ setting isZero
     EOR  r2, r2, #1
@@ -68,7 +68,8 @@ logicalShift_ARM:
     LSR  r0, r0, r1		@ x = x >> n
     
     ADD  r4, r2, #31	@ creating the mask
-    LSL  r5, #1, r4
+    MOV  r8, #1
+    LSL  r5, r8, r4
     MVN  r6, #0
     ADD  r7, r6, r1
     ASR  r3, r5, r7
@@ -115,7 +116,7 @@ fitsBits_ARM:
 
     @ r0 = x, r1 = n, r3 = mask, r4 = tempX, r5 = shift, r6 = ~n
     MVN  r0, r6			@ shift = 33 + ~n
-    ADD  r5, #32, r6
+    ADD  r5, r6, #32
     
     LSL  r3, r0, r5		@ mask = x << shift
     
