@@ -110,32 +110,32 @@ assert(bitAnd_ARM(255,254)==test_bitAnd_ARM(255,254));
 printf("Passed Test Cases for bitAnd_ARM\n");
 
 //Test Cases for getByte 
-assert(getByte(0x12345678,1)==test_getByte(0x12345678,1)); 
-assert(getByte(0,0)==test_getByte(0,0));
-assert(getByte(0x12345678,2)==test_getByte(0x12345678,2));
-assert(getByte(0x12345678,3)==test_getByte(0x12345678,3));  
+assert(getByte_ARM(0x12345678,1)==test_getByte_ARM(0x12345678,1)); 
+assert(getByte_ARM(0,0)==test_getByte_ARM(0,0));
+assert(getByte_ARM(0x12345678,2)==test_getByte_ARM(0x12345678,2));
+assert(getByte_ARM(0x12345678,3)==test_getByte_ARM(0x12345678,3));  
 printf("Passed Test Cases for getByte\n");
 
 //Test Cases for logicalShift
-assert(logicalShift(0x87654321,4)==test_logicalShift(0x87654321,4));
-assert(logicalShift(0x87654321,0)==test_logicalShift(0x87654321,0));
-assert(logicalShift(0x87654321,31)==test_logicalShift(0x87654321,31));
+assert(logicalShift_ARM(0x87654321,4)==test_logicalShift_ARM(0x87654321,4));
+assert(logicalShift_ARM(0x87654321,0)==test_logicalShift_ARM(0x87654321,0));
+assert(logicalShift_ARM(0x87654321,31)==test_logicalShift_ARM(0x87654321,31));
 printf("Passed Test Cases for logicalShift\n");
 
 //Test Cases for bitCount
 //printf("Passed Test Cases for bitCount\n");
 
 //Test Cases for fitsBits
-assert(fitsBits(5,3)==test_fitsBits(5,3));
-assert(fitsBits(-4,3)==test_fitsBits(-4,3));
+assert(fitsBits_ARM(5,3)==test_fitsBits_ARM(5,3));
+assert(fitsBits_ARM(-4,3)==test_fitsBits_ARM(-4,3));
 printf("Passed Test Cases for fitsBits\n");
 
 //Test Cases for negate
-assert(negate(1)==negate(1));
-assert(negate(4)==negate(4));
-assert(negate(-4)==negate(-4));
-assert(negate(1)==negate(1));
-assert(negate(0)==negate(0));
+assert(negate_ARM(1)==negate_ARM(1));
+assert(negate_ARM(4)==negate_ARM(4));
+assert(negate_ARM(-4)==negate_ARM(-4));
+assert(negate_ARM(1)==negate_ARM(1));
+assert(negate_ARM(0)==negate_ARM(0));
 printf("Passed Test Cases for negate\n");
 
 //Test Cases for isLessOrEqual
