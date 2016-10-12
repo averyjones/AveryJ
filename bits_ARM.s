@@ -35,11 +35,11 @@ getByte_ARM:
     @ Save caller's registers on the stack
     push {r4-r11, ip, lr}
 
-	@ r0 = x, r1 = n, r2 = 8
+	@ r0 = x, r1 = n, r2 = 8, r3 = 8*n
 	MOV  r2, #8
-    MUL  r1, r0, r2
-    ASR  r0, r0, r1
-    AND  r0, 0xFF
+    MUL  r3, r2, r1		
+    ASR  r0, r0, r3		@ x = x >> (8*n)
+    AND  r0, 0xFF		@ return (x & 0xFF)
     
     @ restore caller's registers
     pop {r4-r11, ip, lr}
