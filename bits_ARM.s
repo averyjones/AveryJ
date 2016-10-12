@@ -115,8 +115,8 @@ fitsBits_ARM:
     push {r4-r11, ip, lr}
 
     @ r0 = x, r1 = n, r3 = mask, r4 = tempX, r5 = shift, r6 = ~n
-    MVN  r0, r6			@ shift = 33 + ~n
-    ADD  r5, r6, #32
+    MVN  r1, r6			@ shift = 33 + ~n
+    ADD  r5, r6, #33
     
     LSL  r3, r0, r5		@ mask = x << shift
     
