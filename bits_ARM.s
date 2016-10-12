@@ -124,7 +124,15 @@ fitsBits_ARM:
     
     EOR  r0, r4, r0		@ x = tempX ^ x
     
-    EOR  r0, r0, #1		@ returns 1 if can be represented
+    @ r7 = ~x, r8 = -x, r9 = ~(-x)
+    MVN  r7, r0			@ x = !x
+    ADD  r8, r7, #1
+    MVN  r9, r8
+    AND  r0, r9, r7
+    MOV  r10, #31
+    LSR  r0, r0, r10
+    AND  r0, #1
+    
     
     @ restore caller's registers
     pop {r4-r11, ip, lr}
