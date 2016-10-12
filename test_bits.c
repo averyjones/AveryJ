@@ -212,6 +212,11 @@ printf("Passed Test Cases for logicalShift\n");
 //printf("Passed Test Cases for bitCount\n");
 
 //Test Cases for bang
+assert(bang(3)==test_fitsBits(3));
+assert(bang(0)==test_fitsBits(0));
+assert(bang(-5)==test_fitsBits(-5));
+assert(bang(0xFFFFFFFF)==test_fitsBits(0xFFFFFFFF));
+assert(bang(0x80000000)==test_fitsBits(0x80000000));
 //printf("Passed Test Cases for bang\n");
 
 //Test Cases for tmin

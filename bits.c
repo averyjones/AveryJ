@@ -184,7 +184,11 @@ int bitCount(int x) {
  *   Rating: 4 
  */
 int bang(int x) {
-  return 2;
+  /* computes !x by having a 1 in LSB if its 0, and 0 in the LSB if its not*/
+  int notX = ~x;
+  int negX = notX + 1;
+  x = (~negX & notX)>>31;
+  return x&1;
 }
 
 /* 
