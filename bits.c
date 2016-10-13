@@ -417,13 +417,13 @@ unsigned float_twice(unsigned uf)
   int newFloat;  
       
   //check for 0
-  if( x == 0 )
+  if( uf == 0 )
       return 0;    
 
   //retrieve the exponent and increment
-  int exp = 0x7F800000 & uf;
+  /*int exp = 0x7F800000 & uf;
   int newExp = exp + 0x00800000;
   int mask = 0x803FFFFF; 
-  return newExp ^ uf;
+  return newExp ^ uf;*/
 }
 
