@@ -429,5 +429,4 @@ unsigned float_twice(unsigned uf)
   return 2;
 }
 
-}
 
