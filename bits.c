@@ -407,7 +407,7 @@ unsigned float_i2f(int x)
  *   Rating: 4
  */
 unsigned float_twice(unsigned uf) 
-{
+{ /*
   //testing if NaN (all 1's in exponent AND any 1's in the mantissa
   int expMask = (0xEF << 25);
   int mantissaMask = (0x1 << 23);
@@ -421,9 +421,11 @@ unsigned float_twice(unsigned uf)
       return 0;    
 
   //retrieve the exponent and increment
-  /*int exp = 0x7F800000 & uf;
+  int exp = 0x7F800000 & uf;
   int newExp = exp + 0x00800000;
   int mask = 0x803FFFFF; 
   return newExp ^ uf;*/
+}
+
 }
 
