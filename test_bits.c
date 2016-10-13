@@ -254,7 +254,6 @@ printf("Passed Test Cases for isPositive\n");
 //printf("Passed Test Cases for ilog2\n");
 
 //Test Cases for float_neg
-assert(float_neg(0b01111111101000000000000000000000)==test_float_neg(0b01111111101000000000000000000000);
 assert(float_neg((unsigned)1)==test_float_neg((unsigned)1));
 assert(float_neg((unsigned)0)==test_float_neg((unsigned)0));
 assert(float_neg((unsigned)-20)==test_float_neg((unsigned)-20));
