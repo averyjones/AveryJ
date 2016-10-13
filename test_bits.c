@@ -232,19 +232,19 @@ printf("Passed Test Cases for fitsBits\n");
 //printf("Passed Test Cases for divpwr2\n");
 
 //Test Cases for negate
-assert(negate(1)==negate(1));
-assert(negate(4)==negate(4));
-assert(negate(-4)==negate(-4));
-assert(negate(1)==negate(1));
-assert(negate(0)==negate(0));
+assert(negate(1)==test_negate(1));
+assert(negate(4)==test_negate(4));
+assert(negate(-4)==test_negate(-4));
+assert(negate(1)==test_negate(1));
+assert(negate(0)==test_negate(0));
 printf("Passed Test Cases for negate\n");
 
 //Test Cases for isPositive
-assert(isPositive(2)==isPositive(2));
-assert(isPositive(-10)==isPositive(-10));
-assert(isPositive(0)==isPositive(0));
-assert(isPositive(0xF0000000)==isPositive(0xF0000000));
-assert(isPositive(0xEFFFFFFF)==isPositive(0xEFFFFFFF));
+assert(isPositive(2)==test_isPositive(2));
+assert(isPositive(-10)==test_isPositive(-10));
+assert(isPositive(0)==test_isPositive(0));
+assert(isPositive(0xF0000000)==test_isPositive(0xF0000000));
+assert(isPositive(0xEFFFFFFF)==test_isPositive(0xEFFFFFFF));
 printf("Passed Test Cases for isPositive\n");
 
 //Test Cases for isLessOrEqual
@@ -254,10 +254,20 @@ printf("Passed Test Cases for isPositive\n");
 //printf("Passed Test Cases for ilog2\n");
 
 //Test Cases for float_neg
-//printf("Passed Test Cases for float_neg\n");
+assert(float_neg((unsigned)1)==test_float_neg((unsigned)1));
+assert(float_neg((unsigned)0)==test_float_neg((unsigned)0));
+assert(float_neg((unsigned)-20)==test_float_neg((unsigned)-20));
+assert(float_neg((unsigned)255)==test_float_neg((unsigned)255));
+assert(float_neg((unsigned)-255)==test_float_neg((unsigned)-255));
+printf("Passed Test Cases for float_neg\n");
 
 //Test Cases for float_i2f
-//printf("Passed Test Cases for float_i2f\n");
+assert(float_i2f(1)==test_float_i2f(1));
+assert(float_i2f(0)==test_float_i2f(0));
+assert(float_i2f(-20)==test_float_i2f(-20));
+assert(float_i2f(255)==test_float_i2f(255));
+assert(float_i2f(-255)==test_float_i2f(-255));
+printf("Passed Test Cases for float_i2f\n");
 
 //Test Cases for float_twice
 //printf("Passed Test Cases for float_twice\n");

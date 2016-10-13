@@ -362,6 +362,37 @@ unsigned float_neg(unsigned uf)
  */
 unsigned float_i2f(int x)
 {
+  int newFloat = 0;
+  
+  //check for 0
+  if( x == 0 )
+      return 0;
+  
+  //create sign bit
+  int sign = 0;
+  if( x < 0 )
+      sign = 0x10000000 | newFloat;
+  
+  //create exponent
+  int exponent = 0;
+  int leadingOneBit = 32;
+  int mask = 0x10000000;
+  //loop until the first 1 from the MSB is found
+  while( !(mask & x) == 1 ) {
+      leadingOneBit --;
+      mask = mask >> 1;
+  }
+  exponent = leadingOneBit - 1;
+  
+  //create mantissa
+  int mantissa = 0x000007FF;
+  mantissa = mantissa | newFloat;
+  
+  //combine everything
+  newFloat = newFloat | sign;
+  newFloat = newFloat | exponent;
+  newFloat = newFloat | mantissa;
+  return newFloat;
 
 }
 /* 
