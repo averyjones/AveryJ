@@ -393,8 +393,8 @@ unsigned float_i2f(int x)
   
   //create mantissa
   int mantissa = 0;
-  int yo = 0x80000000 >> (32-leadingOneBit-1);
-  int mantissaMask = ~(0x80000000 >> (32-leadingOneBit-1));
+  int yo = 0x80000000 >> (32-leadingOneBit);
+  int mantissaMask = ~((signed)0x80000000 >> (32-leadingOneBit));
   mantissa = mantissaMask & x;
   printf("yo: %08x\n", yo);
   printf("mantissa: %08x\n", mantissa);
