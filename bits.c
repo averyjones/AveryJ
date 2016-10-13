@@ -392,8 +392,8 @@ unsigned float_i2f(int x)
   printf("exponent: %08x\n", exponent);
   
   //create mantissa
-  int mantissa = 0x000007FF;
-  mantissa = mantissa | newFloat;
+  int mantissaMask = ~(0x10000000 >> (32-leadingOneBit))
+  int mantissa = mantissaMask & 0x0007FFFF;
   printf("mantissa: %08x\n", mantissa);
   
   //combine everything
