@@ -387,6 +387,8 @@ unsigned float_i2f(int x)
   }
   exponent = leadingOneBit - 1;
   exponent = exponent + 127;
+  //place exponent in designated 8 bits
+  exponent = exponent << 23;
   printf("exponent: %08x\n", exponent);
   
   //create mantissa
