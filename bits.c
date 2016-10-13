@@ -381,7 +381,7 @@ unsigned float_i2f(int x)
   int leadingOneBit = 31;
   int mask = 0x20000000;
   //loop until the first 1 from the MSB is found
-  while( !(mask & x) == 1 ) {
+  while( !(mask & x) == 1 && leadingOneBit > 1) {
       leadingOneBit --;
       mask = mask >> 1;
   }
