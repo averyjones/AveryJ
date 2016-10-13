@@ -281,7 +281,7 @@ int isPositive(int x)
  */
 int isLessOrEqual(int x, int y) 
 {
-  int difference = y + (~x + 1);
+  /*int difference = y + (~x + 1);
   int equal = !difference;
   
   int sign = x^y;
@@ -297,7 +297,7 @@ int isLessOrEqual(int x, int y)
   int ySign = y & (0x1 << 31);
   int sign = x^y;
   int difference = y + (~x +1);
-  int equal = !difference;
+  int equal = !difference;*/
   
   return 2;
 }
@@ -346,7 +346,7 @@ unsigned float_neg(unsigned uf)
   //testing if NaN (all 1's in exponent AND any 1's in the mantissa
   int expMask = (0xEF << 25);
   int mantissaMask = (0x1 << 23);
-  if( (uf & mask) == mask && (mantissaMask & uf) != 0)
+  if( ((uf & expMask) == expMask) && (mantissaMask & uf) != 0)
       return uf;
   // if it is a number, return the negative
   return ( uf ^ (1 << 31) );
