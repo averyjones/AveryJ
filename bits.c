@@ -269,9 +269,10 @@ int negate(int x)
 int isPositive(int x) 
 {
   /* find if the input is positive by isolating the sign bit */
-  int isZero = !!x;
+  int isZero = !x;
   int signBit = ((1 << 31) & x);
-  return (!(x & (signBit)) ^ isZero);
+  int isPos = !(x & (signBit));
+  return isPos ^ isZero;
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
