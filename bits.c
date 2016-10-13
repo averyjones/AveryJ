@@ -346,7 +346,7 @@ unsigned float_neg(unsigned uf)
   //testing if NaN (all 1's in exponent AND any 1's in the mantissa
   int expMask = (0xEF << 25);
   int mantissaMask = (0x1 << 23);
-  if( ((uf & expMask) == expMask) && (mantissaMask & uf) != 0)
+  if( ((uf & expMask) == expMask)  &&  ((mantissaMask & uf) != 0) )
       return uf;
   // if it is a number, return the negative
   return ( uf ^ (1 << 31) );
@@ -408,6 +408,22 @@ unsigned float_i2f(int x)
  */
 unsigned float_twice(unsigned uf) 
 {
-  return 2;
+  //testing if NaN (all 1's in exponent AND any 1's in the mantissa
+  int expMask = (0xEF << 25);
+  int mantissaMask = (0x1 << 23);
+  if( ((uf & expMask) == expMask)  &&  ((mantissaMask & uf) != 0) )
+      return uf;
+    
+  int newFloat;  
+      
+  //check for 0
+  if( x == 0 )
+      return 0;    
+
+  //retrieve the exponent and increment
+  int exp = 0x7F800000 & uf;
+  int newExp = exp + 0x00800000;
+  int mask = 0x803FFFFF; 
+  return newExp ^ uf;
 }
 
