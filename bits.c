@@ -379,7 +379,7 @@ unsigned float_i2f(int x)
   //create exponent
   int exponent = 0;
   int leadingOneBit = 31;
-  int mask = 0x20000000;
+  int mask = 0x40000000;
   //loop until the first 1 from the MSB is found
   while( !(mask & x) == 1 && leadingOneBit > 1) {
       leadingOneBit --;
