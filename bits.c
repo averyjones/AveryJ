@@ -393,8 +393,9 @@ unsigned float_i2f(int x)
   newFloat = newFloat | exponent;
   newFloat = newFloat | mantissa;
   return newFloat;
-
 }
+
+
 /* 
  * float_twice - Return bit-level equivalent of expression 2*f for
  *   floating point argument f.
@@ -425,6 +426,7 @@ unsigned float_twice(unsigned uf)
   int newExp = exp + 0x00800000;
   int mask = 0x803FFFFF; 
   return newExp ^ uf;*/
+  return 2;
 }
 
 }
