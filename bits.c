@@ -386,6 +386,7 @@ unsigned float_i2f(int x)
       mask = mask >> 1;
   }
   exponent = leadingOneBit - 1;
+  exponent = exponent + 127;
   printf("exponent: %08x\n", exponent);
   
   //create mantissa
