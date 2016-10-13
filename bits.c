@@ -123,7 +123,8 @@ EXAMPLES OF ACCEPTABLE CODING STYLE:*/
  *   Max ops: 8
  *   Rating: 1
  */
-int bitAnd(int x, int y) {
+int bitAnd(int x, int y) 
+{
   /* compute AND by flipping the inputs, ORing them together, and flipping
   the result */
   x = ~x;
@@ -140,7 +141,8 @@ int bitAnd(int x, int y) {
  *   Max ops: 6
  *   Rating: 2
  */
-int getByte(int x, int n) {
+int getByte(int x, int n) 
+{
   /* shift the desired byte to the LSByte spot and isolate it using AND */
   x = x >> (8*n);
   return (x & 0xFF);
@@ -154,7 +156,8 @@ int getByte(int x, int n) {
  *   Max ops: 20
  *   Rating: 3 
  */
-int logicalShift(int x, int n) {
+int logicalShift(int x, int n) 
+{
   /* determine if x is zero, then create a mask to change the possible sign 
   fill into the MSB to be zero/logical */
   int isZero = !(n | 0x0);
@@ -172,7 +175,8 @@ int logicalShift(int x, int n) {
  *   Max ops: 40
  *   Rating: 4
  */
-int bitCount(int x) {
+int bitCount(int x) 
+{
   return 2;
 }
 
@@ -183,7 +187,8 @@ int bitCount(int x) {
  *   Max ops: 12
  *   Rating: 4 
  */
-int bang(int x) {
+int bang(int x) 
+{
   /* computes !x by having a 1 in LSB if its 0, and 0 in the LSB if its not*/
   int notX = ~x;
   int negX = notX + 1;
@@ -197,7 +202,8 @@ int bang(int x) {
  *   Max ops: 4
  *   Rating: 1
  */
-int tmin(void) {
+int tmin(void) 
+{
   /* find the minimum by placing a 1 into the MSB which makes the smallest 
   possible number in 2's complement */
   return ( 0x1 << 31 );
@@ -213,7 +219,8 @@ int tmin(void) {
  *   Max ops: 15
  *   Rating: 2
  */
-int fitsBits(int x, int n) {
+int fitsBits(int x, int n) 
+{
   /* find if an integer can be represented by shifting it back and forth 
   then checking if still equals the original */
   int shift = 33 + ~n;
@@ -230,7 +237,8 @@ int fitsBits(int x, int n) {
  *   Max ops: 15
  *   Rating: 2
  */
-int divpwr2(int x, int n) {
+int divpwr2(int x, int n) 
+{
   /* divide by a power of 2 by exploiting the fact that shifting left 
   divides by 2 for each bit shifter left */
   return (x << n);
@@ -245,7 +253,8 @@ int divpwr2(int x, int n) {
  *   Max ops: 5
  *   Rating: 2
  */
-int negate(int x) {
+int negate(int x) 
+{
   /* negate using the rules for 2's complement (flip bits and add 1)*/
   x = ~x;
   return (x+1);
@@ -257,7 +266,8 @@ int negate(int x) {
  *   Max ops: 8
  *   Rating: 3
  */
-int isPositive(int x) {
+int isPositive(int x) 
+{
   /* find if the input is positive by isolating the sign bit */
   int signBit = ((1 << 31) & x);
   return !(x & (signBit));
@@ -269,11 +279,25 @@ int isPositive(int x) {
  *   Max ops: 24
  *   Rating: 3
  */
-int isLessOrEqual(int x, int y) {
-  /*int difference = y + (~x + 1);
+int isLessOrEqual(int x, int y) 
+{
+  int difference = y + (~x + 1);
   int equal = !difference;
   
-  int diffSign = x^y;*/
+  int sign = x^y;
+  int out = ~sign;???
+  
+  signX = sign & x;
+  
+  difference = ~difference;
+  
+  
+  
+  int xSign = x & (0x1 << 31);
+  int ySign = y & (0x1 << 31);
+  int sign = x^y;
+  int difference = y + (~x +1);
+  int equal = !difference;
   
   return 2;
 }
@@ -284,9 +308,21 @@ int isLessOrEqual(int x, int y) {
  *   Max ops: 90
  *   Rating: 4
  */
-int ilog2(int x) {
+int ilog2(int x) 
+{
+  //gets the leading bit by itself
+  x = x | (x >> 1);
+  x = x | (x >> 2);
+  x = x | (x >> 4);
+  x = x | (x >> 8);
+  x = x | (x >> 16);
+  
+  
+  
   return 2;
 }
+
+
 
 
 /*For the problems that require you to implent floating-point operations,
@@ -305,8 +341,15 @@ You can use arbitrary integer and unsigned constants. */
  *   Max ops: 10
  *   Rating: 2
  */
-unsigned float_neg(unsigned uf) {
- return 2;
+unsigned float_neg(unsigned uf) 
+{
+  //testing if NaN (all 1's in exponent AND any 1's in the mantissa
+  int expMask = (0xEF << 25);
+  int mantissaMask = (0x1 << 23);
+  if( (uf & mask) == mask && (mantissaMask & uf) != 0)
+      return uf;
+  // if it is a number, return the negative
+  return ( uf ^ (1 << 31) );
 }
 /* 
  * float_i2f - Return bit-level equivalent of expression (float) x
@@ -317,8 +360,9 @@ unsigned float_neg(unsigned uf) {
  *   Max ops: 30
  *   Rating: 4
  */
-unsigned float_i2f(int x) {
-  return 2;
+unsigned float_i2f(int x)
+{
+
 }
 /* 
  * float_twice - Return bit-level equivalent of expression 2*f for
@@ -331,7 +375,8 @@ unsigned float_i2f(int x) {
  *   Max ops: 30
  *   Rating: 4
  */
-unsigned float_twice(unsigned uf) {
+unsigned float_twice(unsigned uf) 
+{
   return 2;
 }
 
