@@ -374,6 +374,7 @@ unsigned float_i2f(int x)
   int sign = 0;
   if( x < 0 )
       sign = 0x10000000 | newFloat;
+  printf("\nsign: %08x\n", sign);
   
   //create exponent
   int exponent = 0;
@@ -385,10 +386,12 @@ unsigned float_i2f(int x)
       mask = mask >> 1;
   }
   exponent = leadingOneBit - 1;
+  printf("exponent: %08x\n", exponent);
   
   //create mantissa
   int mantissa = 0x000007FF;
   mantissa = mantissa | newFloat;
+  printf("\nmantissa: %08x\n", mantissa);
   
   //combine everything
   newFloat = newFloat | sign;
