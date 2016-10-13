@@ -378,8 +378,8 @@ unsigned float_i2f(int x)
   
   //create exponent
   int exponent = 0;
-  int leadingOneBit = 32;
-  int mask = 0x10000000;
+  int leadingOneBit = 31;
+  int mask = 0x20000000;
   //loop until the first 1 from the MSB is found
   while( !(mask & x) == 1 ) {
       leadingOneBit --;
@@ -391,7 +391,7 @@ unsigned float_i2f(int x)
   //create mantissa
   int mantissa = 0x000007FF;
   mantissa = mantissa | newFloat;
-  printf("\nmantissa: %08x\n", mantissa);
+  printf("mantissa: %08x\n", mantissa);
   
   //combine everything
   newFloat = newFloat | sign;
