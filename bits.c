@@ -370,10 +370,12 @@ unsigned float_i2f(int x)
   if( x == 0 )
       return 0;
   
-  //create sign bit
+  //create sign bit, change to positive number if needed
   int sign = 0;
-  if( x < 0 )
+  if( x < 0 ) {
       sign = 0x10000000 | newFloat;
+      x = ~x + 1;
+  }
   printf("\nsign: %08x\n", sign);
   
   //create exponent
