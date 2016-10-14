@@ -373,7 +373,7 @@ unsigned float_i2f(int x)
   //create sign bit, change to positive number if needed
   int sign = 0;
   if( x < 0 ) {
-      sign = 0x10000000 | newFloat;
+      sign = 0x80000000 | newFloat;
       x = ~x + 1;
   }
   printf("\nsign: %08x\n", sign);
