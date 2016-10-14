@@ -372,11 +372,11 @@ unsigned float_i2f(int x)
   
   //create sign bit, change to positive number if needed
   int sign = 0;
-  if( x < 0 ) {
+  if( x < 0 ) 
+  {
       sign = 0x80000000 | newFloat;
       x = ~x + 1;
   }
-  printf("\nsign: %08x\n", sign);
   
   //create exponent
   int exponent = 0;
@@ -391,15 +391,12 @@ unsigned float_i2f(int x)
   exponent = exponent + 127;
   //place exponent in designated 8 bits
   exponent = exponent << 23;
-  printf("exponent: %08x\n", exponent);
   
   //create mantissa
   int mantissa = 0;
   int mantissaMask = ~((signed)0x80000000 >> (32-leadingOneBit));
   mantissa = mantissaMask & x;
   mantissa = mantissa << (24-leadingOneBit);
-  printf("mantissa: %08x\n", mantissa);
-  printf("leadingOneBit: %d\n", leadingOneBit);
   
   //combine everything
   newFloat = newFloat | sign;
@@ -421,14 +418,12 @@ unsigned float_i2f(int x)
  *   Rating: 4
  */
 unsigned float_twice(unsigned uf) 
-{ /*
+{ 
   //testing if NaN (all 1's in exponent AND any 1's in the mantissa
   int expMask = (0xEF << 25);
   int mantissaMask = (0x1 << 23);
   if( ((uf & expMask) == expMask)  &&  ((mantissaMask & uf) != 0) )
       return uf;
-    
-  int newFloat;  
       
   //check for 0
   if( uf == 0 )
@@ -437,9 +432,8 @@ unsigned float_twice(unsigned uf)
   //retrieve the exponent and increment
   int exp = 0x7F800000 & uf;
   int newExp = exp + 0x00800000;
-  int mask = 0x803FFFFF; 
-  return newExp ^ uf;*/
-  return 2;
+  uf = uf & 0x803FFFFF;
+  return newExp | uf;
 }
 
 
