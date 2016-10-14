@@ -446,7 +446,10 @@ unsigned float_twice(unsigned uf)
   //retrieve the exponent and increment
   int exp = 0x7F800000 & uf;
   int newExp = exp + 0x00800000;
+  printf("exp: %0x8\n", exp);
+  printf("newExp: %0x8\n", newExp);
   uf = uf & 0x803FFFFF;
+  printf("return: %0x8\n", newExp|uf);
   return newExp | uf;
 }
 
