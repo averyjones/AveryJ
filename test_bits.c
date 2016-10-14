@@ -263,8 +263,8 @@ assert(float_neg((unsigned)-255)==test_float_neg((unsigned)-255));
 printf("Passed Test Cases for float_neg\n");
 
 //Test Cases for float_i2f
-printf("float_i2f(1): %08x\n", float_i2f(1));
-printf("test_float_i2f(1): %08x\n", test_float_i2f(1));
+printf("float_i2f(-20): %08x\n", float_i2f(-20));
+printf("test_float_i2f(-20): %08x\n", test_float_i2f(-20));
 assert(float_i2f(1)==test_float_i2f(1));
 assert(float_i2f(0)==test_float_i2f(0));
 assert(float_i2f(-20)==test_float_i2f(-20));
