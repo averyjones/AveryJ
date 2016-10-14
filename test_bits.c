@@ -278,7 +278,7 @@ assert(float_twice(20)==test_float_twice(20));
 assert(float_twice(-20)==test_float_twice(-20));
 assert(float_twice(255.56)==test_float_twice(255.56));
 assert(float_twice(-10.2)==test_float_twice(-10.2));
-//printf("Passed Test Cases for float_twice\n");
+printf("Passed Test Cases for float_twice\n");
 
 
 return 0;
