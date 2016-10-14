@@ -259,6 +259,7 @@ int negate(int x)
   x = ~x;
   return (x+1);
 }
+
 /* 
  * isPositive - return 1 if x > 0, return 0 otherwise 
  *   Example: isPositive(-1) = 0.
@@ -274,6 +275,7 @@ int isPositive(int x)
   int isPos = !(x & (signBit));
   return isPos ^ isZero;
 }
+
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
  *   Example: isLessOrEqual(4,5) = 1.
@@ -303,6 +305,7 @@ int isLessOrEqual(int x, int y)
   
   return 2;
 }
+
 /*
  * ilog2 - return floor(log base 2 of x), where x > 0
  *   Example: ilog2(16) = 4
@@ -345,6 +348,9 @@ You can use arbitrary integer and unsigned constants. */
  */
 unsigned float_neg(unsigned uf) 
 {
+  /* find the negative value of the input by flipping the sign bit of the 
+  floating point representation */
+  
   //testing if NaN (all 1's in exponent AND any 1's in the mantissa
   int expMask = (0xEF << 25);
   int mantissaMask = (0x1 << 23);
@@ -353,6 +359,8 @@ unsigned float_neg(unsigned uf)
   // if it is a number, return the negative
   return ( uf ^ (1 << 31) );
 }
+
+
 /* 
  * float_i2f - Return bit-level equivalent of expression (float) x
  *   Result is returned as unsigned int, but
@@ -364,6 +372,9 @@ unsigned float_neg(unsigned uf)
  */
 unsigned float_i2f(int x)
 {
+  /* turn an int into a float by creating the sign, exponent, and mantissa 
+  segments, then combining them into the new floating point number rep */
+  
   int newFloat = 0;
   
   //check for 0
@@ -419,6 +430,9 @@ unsigned float_i2f(int x)
  */
 unsigned float_twice(unsigned uf) 
 { 
+  /* double the argument by extracting the exponent, adding 1, then 
+  replacing the old exponent with the new one */
+  
   //testing if NaN (all 1's in exponent AND any 1's in the mantissa
   int expMask = (0xEF << 25);
   int mantissaMask = (0x1 << 23);
