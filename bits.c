@@ -185,7 +185,7 @@ int bitCount(int x)
   b = (b << 16) + 0x33;
   
   int c = (0x0F << 8) + 0x0F;         // c = 0x0F0F0F0F
-  c = (c << 16) + 0x0F
+  c = (c << 16) + 0x0F;
   
   int d = (0xFF << 24) + 0xFF;        // d = 0x00FF00FF
   
@@ -350,7 +350,7 @@ int ilog2(int x)
   b = (b << 16) + 0x33;
   
   int c = (0x0F << 8) + 0x0F;         // c = 0x0F0F0F0F
-  c = (c << 16) + 0x0F
+  c = (c << 16) + 0x0F;
   
   int d = (0xFF << 24) + 0xFF;        // d = 0x00FF00FF
   
