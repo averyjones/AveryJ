@@ -177,7 +177,12 @@ int logicalShift(int x, int n)
  */
 int bitCount(int x) 
 {
-  return 2;
+  x = (x & 0x55555555) + ((x >> 1) & 0x55555555);
+  x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
+  x = (x & 0x0000FFFF) + ((x >> 4) & 0x0000FFFF);
+  x = (x & 0x00FF00FF) + ((x >> 8) & 0x00FF00FF);
+  x = (x & 0x0F0F0F0F) + ((x >> 16) & 0x0F0F0F0F);
+  return x;
 }
 
 /* 
@@ -315,7 +320,7 @@ int isLessOrEqual(int x, int y)
  */
 int ilog2(int x) 
 {
-  //gets the leading bit by itself
+  //gets the leading bit followed by a 1
   x = x | (x >> 1);
   x = x | (x >> 2);
   x = x | (x >> 4);

@@ -209,6 +209,11 @@ assert(logicalShift(0x87654321,31)==test_logicalShift(0x87654321,31));
 printf("Passed Test Cases for logicalShift\n");
 
 //Test Cases for bitCount
+assert(bitCount(5)==test_bitCount(5));
+assert(bitCount(0)==test_bitCount(0));
+assert(bitCount(-10)==test_bitCount(-10));
+assert(bitCount(255)==test_bitCount(255));
+assert(bitCount(-255)==test_bitCount(-255));
 //printf("Passed Test Cases for bitCount\n");
 
 //Test Cases for bang
@@ -229,6 +234,11 @@ assert(fitsBits(-4,3)==test_fitsBits(-4,3));
 printf("Passed Test Cases for fitsBits\n");
 
 //Test Cases for divpwr2
+assert(divpwr2(8,3)==test_divpwr2(8,3));
+assert(divpwr2(-16,1)==test_divpwr2(-16,1));
+assert(divpwr2(8,0)==test_divpwr2(8,0));
+assert(divpwr2(15,1)==test_divpwr2(15,1));
+assert(divpwr2(1073741824,30)==test_divpwr2(1073741824,30));
 //printf("Passed Test Cases for divpwr2\n");
 
 //Test Cases for negate
