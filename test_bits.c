@@ -261,6 +261,11 @@ printf("Passed Test Cases for isPositive\n");
 //printf("Passed Test Cases for isLessOrEqual\n");
 
 //Test Cases for ilog2
+assert(ilog2(2)==test_ilog2(2));
+assert(ilog2(1)==test_ilog2(1));
+assert(ilog2(10)==test_ilog2(10));
+assert(ilog2(16)==test_ilog2(16));
+assert(ilog2(30)==test_ilog2(30));
 //printf("Passed Test Cases for ilog2\n");
 
 //Test Cases for float_neg

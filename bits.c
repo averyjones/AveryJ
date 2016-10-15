@@ -177,11 +177,25 @@ int logicalShift(int x, int n)
  */
 int bitCount(int x) 
 {
-  x = (x & 0x55555555) + ((x >> 1) & 0x55555555);
-  x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
-  x = (x & 0x0000FFFF) + ((x >> 4) & 0x0000FFFF);
-  x = (x & 0x00FF00FF) + ((x >> 8) & 0x00FF00FF);
-  x = (x & 0x0F0F0F0F) + ((x >> 16) & 0x0F0F0F0F);
+  /* count the number of bits set to 1 by isolating each bit and shifting */
+  int a = (0x55 << 8) + 0x55;         // a = 0x55555555
+  a = (a << 16) + a;
+  
+  int b = (0x33 << 8) + 0x33;         // b = 0x33333333
+  b = (b << 16) + 0x33;
+  
+  int c = (0x0F << 8) + 0x0F;         // c = 0x0F0F0F0F
+  c = (c << 16) + 0x0F
+  
+  int d = (0xFF << 24) + 0xFF;        // d = 0x00FF00FF
+  
+  int e = (0xFF << 8) + 0xFF;         // e = 0x0000FFFF
+  
+  x = (x & a) + ((x >> 1) & a);
+  x = (x & b) + ((x >> 2) & b);
+  x = (x & c) + ((x >> 4) & c);
+  x = (x & d) + ((x >> 8) & d);
+  x = (x & e) + ((x >> 16) & e);
   return x;
 }
 
@@ -320,6 +334,7 @@ int isLessOrEqual(int x, int y)
  */
 int ilog2(int x) 
 {
+  /* find log of x by finding the location of the leading 1 */
   //gets the leading bit followed by a 1
   x = x | (x >> 1);
   x = x | (x >> 2);
@@ -327,9 +342,26 @@ int ilog2(int x)
   x = x | (x >> 8);
   x = x | (x >> 16);
   
+  // use bitCount logic to count the number of 1's which is the floor(log(x))
+  int a = (0x55 << 8) + 0x55;         // a = 0x55555555
+  a = (a << 16) + a;
   
+  int b = (0x33 << 8) + 0x33;         // b = 0x33333333
+  b = (b << 16) + 0x33;
   
-  return 2;
+  int c = (0x0F << 8) + 0x0F;         // c = 0x0F0F0F0F
+  c = (c << 16) + 0x0F
+  
+  int d = (0xFF << 24) + 0xFF;        // d = 0x00FF00FF
+  
+  int e = (0xFF << 8) + 0xFF;         // e = 0x0000FFFF
+  
+  x = (x & a) + ((x >> 1) & a);
+  x = (x & b) + ((x >> 2) & b);
+  x = (x & c) + ((x >> 4) & c);
+  x = (x & d) + ((x >> 8) & d);
+  x = (x & e) + ((x >> 16) & e);
+  return x;
 }
 
 
