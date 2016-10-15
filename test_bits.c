@@ -280,7 +280,7 @@ printf("test_float_twice(-255.56): %0x8\n", test_float_twice(0xc37f8f5c));
 /*-20*/assert(float_twice(0xc1a00000)==test_float_twice(0xc1a00000));
 /*10.2*/assert(float_twice(0x41233333)==test_float_twice(0x41233333));
 /*-10.2*/assert(float_twice(0xc1233333)==test_float_twice(0xc1233333));
-/*-10.56*/assert(float_twice(0x42c91eb8)==test_float_twice(0x42c91eb8));
+/*-10.56*/assert(float_twice(0x4128f5c3)==test_float_twice(0x4128f5c3));
 printf("Passed Test Cases for float_twice\n");
 
 
