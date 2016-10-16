@@ -213,7 +213,7 @@ assert(bitCount(5)==test_bitCount(5));
 assert(bitCount(0)==test_bitCount(0));
 assert(bitCount(255)==test_bitCount(255));
 assert(bitCount(1)==test_bitCount(1));
-//printf("Passed Test Cases for bitCount\n");
+printf("Passed Test Cases for bitCount\n");
 
 //Test Cases for bang
 assert(bang(3)==test_bang(3));
@@ -238,7 +238,7 @@ assert(divpwr2(-33,4)==test_divpwr2(-33,4));
 assert(divpwr2(8,0)==test_divpwr2(8,0));
 assert(divpwr2(15,1)==test_divpwr2(15,1));
 assert(divpwr2(1073741824,30)==test_divpwr2(1073741824,30));
-//printf("Passed Test Cases for divpwr2\n");
+printf("Passed Test Cases for divpwr2\n");
 
 //Test Cases for negate
 assert(negate(1)==test_negate(1));
@@ -264,7 +264,7 @@ assert(isLessOrEqual(5,4)==test_isLessOrEqual(5,4));
 assert(isLessOrEqual(-5,4)==test_isLessOrEqual(-5,4));
 assert(isLessOrEqual(-4,-5)==test_isLessOrEqual(-4,-5));
 assert(isLessOrEqual(-5,-4)==test_isLessOrEqual(-5,-4));
-//printf("Passed Test Cases for isLessOrEqual\n");
+printf("Passed Test Cases for isLessOrEqual\n");
 
 //Test Cases for ilog2
 assert(ilog2(16)==test_ilog2(16));
@@ -272,7 +272,7 @@ assert(ilog2(2)==test_ilog2(2));
 assert(ilog2(10)==test_ilog2(10));
 assert(ilog2(16)==test_ilog2(16));
 assert(ilog2(30)==test_ilog2(30));
-//printf("Passed Test Cases for ilog2\n");
+printf("Passed Test Cases for ilog2\n");
 
 //Test Cases for float_neg
 assert(float_neg((unsigned)1)==test_float_neg((unsigned)1));
