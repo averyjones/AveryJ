@@ -116,6 +116,7 @@ int logicalShift(int x, int n)
 int bitCount(int x) 
 {
   /* count the number of bits set to 1 by isolating each bit and shifting */
+  //creates all the masks
   int a, b, c, d, e;
   a = (0x55 << 8) + 0x55;         // a = 0x55555555
   a = (a << 16) + a;
@@ -130,6 +131,7 @@ int bitCount(int x)
   
   e = (0xFF << 8) + 0xFF;         // e = 0x0000FFFF
   
+  //masks and shifts over to find all set bits 
   x = (x & a) + ((x >> 1) & a);
   x = (x & b) + ((x >> 2) & b);
   x = (x & c) + ((x >> 4) & c);
@@ -257,6 +259,8 @@ int isPositive(int x)
  */
 int isLessOrEqual(int x, int y) 
 {
+  /* determine if x is less than or equal to y by subtracting x from y and
+  finding the sign of the difference */
   int difference = y + (~x + 1);
   int signDiff = (difference >> 31) & 1;   //negative if x > y
 
