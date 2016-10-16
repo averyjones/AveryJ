@@ -461,7 +461,7 @@ unsigned float_i2f(int x)
   
   //create mantissa
   mantissa = 0;
-  mantissaMask = ~((signed)0x80000000 >> (32-leadingOneBit));
+  mantissaMask = ~(0x80000000 >> (32-leadingOneBit));
   mantissa = mantissaMask & x;
   mantissa = mantissa << (24-leadingOneBit);
   
