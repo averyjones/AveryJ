@@ -212,6 +212,7 @@ printf("Passed Test Cases for logicalShift\n");
 assert(bitCount(5)==test_bitCount(5));
 assert(bitCount(0)==test_bitCount(0));
 assert(bitCount(255)==test_bitCount(255));
+assert(bitCount(1)==test_bitCount(1));
 //printf("Passed Test Cases for bitCount\n");
 
 //Test Cases for bang
@@ -232,8 +233,6 @@ assert(fitsBits(-4,3)==test_fitsBits(-4,3));
 printf("Passed Test Cases for fitsBits\n");
 
 //Test Cases for divpwr2
-printf("divpwr2(-33,4): %x\n", divpwr2(-33,4));
-printf("test_divpwr2(-33,4): %x\n", test_divpwr2(-33,4));
 assert(divpwr2(8,3)==test_divpwr2(8,3));
 assert(divpwr2(-33,4)==test_divpwr2(-33,4));
 assert(divpwr2(8,0)==test_divpwr2(8,0));
@@ -294,6 +293,8 @@ printf("Passed Test Cases for float_i2f\n");
 /*10.2*/assert(float_twice(0x41233333)==test_float_twice(0x41233333));
 /*-10.2*/assert(float_twice(0xc1233333)==test_float_twice(0xc1233333));
 /*-10.56*/assert(float_twice(0x4128f5c3)==test_float_twice(0x4128f5c3));
+/*20.562*/assert(float_twice(0x41a47efa)==test_float_twice(0x41a47efa));
+/*-20.562*/assert(float_twice(0xc1a47efa)==test_float_twice(0xc1a47efa));
 printf("Passed Test Cases for float_twice\n");
 
 
