@@ -14,68 +14,6 @@
  */
 
 #if 0
-/*
- * Instructions to Students:
- *
- * STEP 1: Read the following instructions carefully.
- */
-
-
-  /*Each "Expr" is an expression using ONLY the following:
-  1. Integer constants 0 through 255 (0xFF), inclusive. You are
-      not allowed to use big constants such as 0xffffffff.
-  2. Function arguments and local variables (no global variables).
-  3. Unary integer operations ! ~
-  4. Binary integer operations & ^ | + << >>
-    
-  Some of the problems restrict the set of allowed operators even further.
-  Each "Expr" may consist of multiple operators. You are not restricted to
-  one operator per line.
-
-  You are expressly forbidden to:
-  1. Use any control constructs such as if, do, while, for, switch, etc.
-  2. Define or use any macros.
-  3. Define any additional functions in this file.
-  4. Call any functions.
-  5. Use any other operations, such as &&, ||, -, or ?:
-  6. Use any form of casting.
-  7. Use any data type other than int.  This implies that you
-     cannot use arrays, structs, or unions.
-
- 
-  You may assume that your machine:
-  1. Uses 2s complement, 32-bit representations of integers.
-  2. Performs right shifts arithmetically.
-  3. Has unpredictable behavior when shifting an integer by more
-     than the word size.
-
-EXAMPLES OF ACCEPTABLE CODING STYLE:*/
-  /*
-   * pow2plus1 - returns 2^x + 1, where 0 <= x <= 31
-   */
-  int pow2plus1(int x) {
-     /* exploit ability of shifts to compute powers of 2 */
-     return (1 << x) + 1;
-  }
-
-  /*
-   * pow2plus4 - returns 2^x + 4, where 0 <= x <= 31
-   */
-  int pow2plus4(int x) {
-     /* exploit ability of shifts to compute powers of 2 */
-     int result = (1 << x);
-     result += 4;
-     return result;
-  }
-
-/*
- * STEP 2: Modify the following functions according the coding rules.
- * 
- *   IMPORTANT. TO AVOID GRADING SURPRISES:
- *   1. Use the dlc compiler to check that your solutions conform
- *      to the coding rules.
- *   2. Use the gradescope autograder to check for logical correctness 
- */
 
 
 #endif
@@ -266,13 +204,17 @@ int divpwr2(int x, int n)
   positive before the shift */
   //if its negative, perform a 2's complement
   int signBit, mask;
+  printf("x: %x\n", x);
   signBit = ((1 << 31) & x);
   mask = (signBit<<31) >> 31;
   x = (x ^ mask) + signBit;
+  printf("x after 2's before shift: %x\n", x);
   //shift right once you have positive number
   x = x >> n;
+  printf("x after shift: %x\n", x);
   //if signBit is negative then perform 2's complement again
   x = (x ^ mask) + signBit;
+  printf("x after shift and 2's: %x\n", x);
   return x;
 }
 
