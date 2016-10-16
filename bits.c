@@ -129,8 +129,7 @@ int bitAnd(int x, int y)
   the result */
   x = ~x;
   y = ~y;
-  int z = x|y;
-  return ~z;
+  return ~(x|y);
 }
 
 /* 
@@ -144,7 +143,7 @@ int bitAnd(int x, int y)
 int getByte(int x, int n) 
 {
   /* shift the desired byte to the LSByte spot and isolate it using AND */
-  x = x >> (8*n);
+  x = x >> (n<<(1<<3));
   return (x & 0xFF);
 }
 
