@@ -209,11 +209,10 @@ assert(logicalShift(0x87654321,31)==test_logicalShift(0x87654321,31));
 printf("Passed Test Cases for logicalShift\n");
 
 //Test Cases for bitCount
-/*assert(bitCount(5)==test_bitCount(5));
+assert(bitCount(5)==test_bitCount(5));
 assert(bitCount(0)==test_bitCount(0));
 assert(bitCount(-10)==test_bitCount(-10));
 assert(bitCount(255)==test_bitCount(255));
-assert(bitCount(-255)==test_bitCount(-255));*/
 //printf("Passed Test Cases for bitCount\n");
 
 //Test Cases for bang
@@ -263,8 +262,8 @@ printf("Passed Test Cases for isPositive\n");
 //printf("Passed Test Cases for isLessOrEqual\n");
 
 //Test Cases for ilog2
+assert(ilog2(16)==test_ilog2(16));
 assert(ilog2(2)==test_ilog2(2));
-assert(ilog2(1)==test_ilog2(1));
 assert(ilog2(10)==test_ilog2(10));
 assert(ilog2(16)==test_ilog2(16));
 assert(ilog2(30)==test_ilog2(30));
