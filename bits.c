@@ -205,8 +205,11 @@ int divpwr2(int x, int n)
   //if its negative, perform a 2's complement
   int signBit, mask;
   printf("x: %x\n", x);
+  
   signBit = ((1 << 31) & x);
+  printf("signBit: %x\n", signBit);
   mask = (signBit<<31) >> 31;
+  printf("mask: %x\n", mask);
   x = (x ^ mask) + signBit;
   printf("x after 2's before shift: %x\n", x);
   //shift right once you have positive number
