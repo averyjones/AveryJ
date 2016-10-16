@@ -266,7 +266,10 @@ int divpwr2(int x, int n)
   int mask = (signBit<<31) >> 31;
   x = (x ^ mask) + signBit;
   //shift right once you have positive number
-  return (x >> n);
+  x = x >> n;
+  //if signBit is negative then perform 2's complement again
+  x = (x ^ mask) + signBit;
+  return x;
 }
 
 /* 
