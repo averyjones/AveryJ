@@ -438,7 +438,7 @@ unsigned float_i2f(int x)
       return 0;
   
   //create sign bit, change to positive number if needed
-  int sign = 0;
+  sign = 0;
   if( x < 0 ) 
   {
       sign = 0x80000000 | newFloat;
