@@ -106,25 +106,52 @@ bitCount_ARM:
     @ count the number of bits set to 1 by isolating each bit and shifting
     
     @ r0 = x, r1 = left add, r2 = right add, r3 = shift right value
-    AND  r1, r0, #0x55555555		@ x = (x&a) + ((x>>1)&a)
+    @ r4 = current number, r5 = current number shifted
+    
+    MOV  r4, #0x55					@ a = 0x55555555
+    LSL  r4, r4, #8
+    ADD  r4, r4, #0x55
+    LSL  r5, r4, #16
+    ADD  r4, r4, r5
+    AND  r1, r0, r4					@ x = (x&a) + ((x>>1)&a)
     LSR  r3, r0, #1
-    AND  r2, r3, #0x55555555
+    AND  r2, r3, r4
     ADD  r0, r1, r2
-    AND  r1, r0, #0x33333333		@ x = (x&b) + ((x>>2)&b)
+
+    MOV  r4, #0x33					@ b = 0x33333333
+    LSL  r4, r4, #8
+    ADD  r4, r4, #0x33
+    LSL  r5, r4, #16
+    ADD  r4, r4, r5
+    AND  r1, r0, r4					@ x = (x&b) + ((x>>2)&b)
     LSR  r3, r0, #2
-    AND  r2, r3, #0x33333333
+    AND  r2, r3, r4
     ADD  r0, r1, r2
-    AND  r1, r0, #0x0F0F0F0F		@ x = (x&c) + ((x>>4)&c)
+
+    MOV  r4, #0x0F					@ c = 0x0F0F0F0F
+    LSL  r4, r4, #8
+    ADD  r4, r4, #0x0F
+    LSL  r5, r4, #16
+    ADD  r4, r4, r5
+    AND  r1, r0, r4					@ x = (x&c) + ((x>>4)&c)
     LSR  r3, r0, #4
-    AND  r2, r3, #0x0F0F0F0F
+    AND  r2, r3, r4
     ADD  r0, r1, r2
-    AND  r1, r0, #0x00FF00FF		@ x = (x&d) + ((x>>8)&d)
+
+    MOV  r4, #0xFF					@ d = 0x00FF00FF
+    LSL  r4, r4, #24
+    ADD  r4, r4, #0xFF
+    AND  r1, r0, r4					@ x = (x&d) + ((x>>8)&d)
     LSR  r3, r0, #8
-    AND  r2, r3, #0x00FF00FF
+    AND  r2, r3, r4
     ADD  r0, r1, r2
-    AND  r1, r0, #0x0000FFFF		@ x = (x&e) + ((x>>16)&e)
+
+    MOV  r4, #0xFF					@ e = 0x0000FFFF
+    LSL  r4, r4, #8
+    ADD  r4, r4, #0xFF
+    AND  r1, r0, r4					@ x = (x&e) + ((x>>16)&e)
     LSR  r3, r0, #16
-    AND  r2, r3, #0x0000FFFF
+    AND  r2, r3, r4
     ADD  r0, r1, r2
     
     
