@@ -261,9 +261,9 @@ int isLessOrEqual(int x, int y)
 {
   /* determine if x is less than or equal to y by subtracting x from y and
   finding the sign of the difference */
-  
-  int difference = y + (~x + 1);
-  int signDiff = (difference >> 31) & 1;   //negative if x > y
+  int difference, signDiff;
+  difference = y + (~x + 1);
+  signDiff = (difference >> 31) & 1;   //negative if x > y
 
   return !signDiff;
 }

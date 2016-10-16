@@ -123,7 +123,11 @@ assert(logicalShift_ARM(0x87654321,31)==test_logicalShift_ARM(0x87654321,31));
 printf("Passed Test Cases for logicalShift\n");
 
 //Test Cases for bitCount
-//printf("Passed Test Cases for bitCount\n");
+assert(bitCount_ARM(5)==test_bitCount_ARM(5));
+assert(bitCount_ARM(0)==test_bitCount_ARM(0));
+assert(bitCount_ARM(255)==test_bitCount_ARM(255));
+assert(bitCount_ARM(1)==test_bitCount_ARM(1));
+printf("Passed Test Cases for bitCount\n");
 
 //Test Cases for fitsBits
 assert(fitsBits_ARM(5,3)==test_fitsBits_ARM(5,3));
@@ -139,7 +143,14 @@ assert(negate_ARM(0)==negate_ARM(0));
 printf("Passed Test Cases for negate\n");
 
 //Test Cases for isLessOrEqual
-//printf("Passed Test Cases for isLessOrEqual\n");
+assert(isLessOrEqual_ARM(4,5)==test_isLessOrEqual_ARM(4,5));
+assert(isLessOrEqual_ARM(0,0)==test_isLessOrEqual_ARM(0,0));
+assert(isLessOrEqual_ARM(-4,5)==test_isLessOrEqual_ARM(-4,5));
+assert(isLessOrEqual_ARM(5,4)==test_isLessOrEqual_ARM(5,4));
+assert(isLessOrEqual_ARM(-5,4)==test_isLessOrEqual_ARM(-5,4));
+assert(isLessOrEqual_ARM(-4,-5)==test_isLessOrEqual_ARM(-4,-5));
+assert(isLessOrEqual_ARM(-5,-4)==test_isLessOrEqual_ARM(-5,-4));
+printf("Passed Test Cases for isLessOrEqual\n");
 
 
 return 0;
