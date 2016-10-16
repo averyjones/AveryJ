@@ -179,18 +179,18 @@ int bitCount(int x)
 {
   /* count the number of bits set to 1 by isolating each bit and shifting */
   int a, b, c, d, e;
-  int a = (0x55 << 8) + 0x55;         // a = 0x55555555
+  a = (0x55 << 8) + 0x55;         // a = 0x55555555
   a = (a << 16) + a;
   
-  int b = (0x33 << 8) + 0x33;         // b = 0x33333333
+  b = (0x33 << 8) + 0x33;         // b = 0x33333333
   b = (b << 16) + 0x33;
   
-  int c = (0x0F << 8) + 0x0F;         // c = 0x0F0F0F0F
+  c = (0x0F << 8) + 0x0F;         // c = 0x0F0F0F0F
   c = (c << 16) + 0x0F;
   
-  int d = (0xFF << 24) + 0xFF;        // d = 0x00FF00FF
+  d = (0xFF << 24) + 0xFF;        // d = 0x00FF00FF
   
-  int e = (0xFF << 8) + 0xFF;         // e = 0x0000FFFF
+  e = (0xFF << 8) + 0xFF;         // e = 0x0000FFFF
   
   x = (x & a) + ((x >> 1) & a);
   x = (x & b) + ((x >> 2) & b);
