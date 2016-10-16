@@ -371,7 +371,7 @@ int ilog2(int x)
   x = (x & c) + ((x >> 4) & c);
   x = (x & d) + ((x >> 8) & d);
   x = (x & e) + ((x >> 16) & e);
-  return x;
+  return x + ((1<<31)>>31);
 }
 
 
