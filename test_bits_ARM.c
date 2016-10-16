@@ -93,7 +93,7 @@ int test_negate_ARM(int x)
   return -x;
 }
 
-int test_isLessOrEqual(int x, int y)
+int test_isLessOrEqual_ARM(int x, int y)
 {
   return x <= y;
 }
