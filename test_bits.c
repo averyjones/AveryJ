@@ -232,13 +232,13 @@ assert(fitsBits(-4,3)==test_fitsBits(-4,3));
 printf("Passed Test Cases for fitsBits\n");
 
 //Test Cases for divpwr2
-/*printf("divpwr2(-33,4): %0x8\n", divpwr2(-33,4));
-printf("test_divpwr2(-33,4): %0x8\n", test_divpwr2(-33,4));
+printf("divpwr2(-33,4): %x\n", divpwr2(-33,4));
+printf("test_divpwr2(-33,4): %x\n", test_divpwr2(-33,4));
 assert(divpwr2(8,3)==test_divpwr2(8,3));
 assert(divpwr2(-33,4)==test_divpwr2(-33,4));
 assert(divpwr2(8,0)==test_divpwr2(8,0));
 assert(divpwr2(15,1)==test_divpwr2(15,1));
-assert(divpwr2(1073741824,30)==test_divpwr2(1073741824,30));*/
+assert(divpwr2(1073741824,30)==test_divpwr2(1073741824,30));
 //printf("Passed Test Cases for divpwr2\n");
 
 //Test Cases for negate
