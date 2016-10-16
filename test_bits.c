@@ -295,6 +295,8 @@ printf("Passed Test Cases for float_i2f\n");
 /*-10.56*/assert(float_twice(0x4128f5c3)==test_float_twice(0x4128f5c3));
 /*20.562*/assert(float_twice(0x41a47efa)==test_float_twice(0x41a47efa));
 /*-20.562*/assert(float_twice(0xc1a47efa)==test_float_twice(0xc1a47efa));
+/*.6969*/assert(float_twice(0x3f32680a)==test_float_twice(0x3f32680a));
+/*-.6969*/assert(float_twice(0xbf32680a)==test_float_twice(0xbf32680a));
 printf("Passed Test Cases for float_twice\n");
 
 
