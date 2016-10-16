@@ -263,7 +263,7 @@ int divpwr2(int x, int n)
   positive before the shift */
   //if its negative, perform a 2's complement
   int signBit = ((1 << 31) & x);
-  int mask = signBit >> 31;
+  int mask = (signBit<<31) >> 31;
   x = (x ^ mask) + signBit;
   //shift right once you have positive number
   return (x >> n);
