@@ -344,12 +344,14 @@ int isLessOrEqual(int x, int y)
 int ilog2(int x) 
 {
   /* find log of x by finding the location of the leading 1 */
-  //gets the leading bit followed by a 1
+  
+  //gets the leading bit followed by all 1's
   x = x | (x >> 1);
   x = x | (x >> 2);
   x = x | (x >> 4);
   x = x | (x >> 8);
   x = x | (x >> 16);
+  printf("should be leading bit with all 1's x: %0x8\n", x);
   
   // use bitCount logic to count the number of 1's which is the floor(log(x))
   int a = (0x55 << 8) + 0x55;         // a = 0x55555555
