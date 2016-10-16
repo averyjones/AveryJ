@@ -257,6 +257,13 @@ assert(isPositive(0xEFFFFFFF)==test_isPositive(0xEFFFFFFF));
 printf("Passed Test Cases for isPositive\n");
 
 //Test Cases for isLessOrEqual
+assert(isLessOrEqual(4,5)==test_isLessOrEqual(4,5));
+assert(isLessOrEqual(0,0)==test_isLessOrEqual(0,0));
+assert(isLessOrEqual(-4,5)==test_isLessOrEqual(-4,5));
+assert(isLessOrEqual(5,4)==test_isLessOrEqual(5,4));
+assert(isLessOrEqual(-5,4)==test_isLessOrEqual(-5,4));
+assert(isLessOrEqual(-4,-5)==test_isLessOrEqual(-4,-5));
+assert(isLessOrEqual(-5,-4)==test_isLessOrEqual(-5,-4));
 //printf("Passed Test Cases for isLessOrEqual\n");
 
 //Test Cases for ilog2

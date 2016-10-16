@@ -257,25 +257,10 @@ int isPositive(int x)
  */
 int isLessOrEqual(int x, int y) 
 {
-  /*int difference = y + (~x + 1);
-  int equal = !difference;
-  
-  int sign = x^y;
-  int out = ~sign;???
-  
-  signX = sign & x;
-  
-  difference = ~difference;
-  
-  
-  
-  int xSign = x & (0x1 << 31);
-  int ySign = y & (0x1 << 31);
-  int sign = x^y;
-  int difference = y + (~x +1);
-  int equal = !difference;*/
-  
-  return 2;
+  int difference = y + (~x + 1);
+  int signDiff = (difference >> 31) & 1;   //negative if x > y
+
+  return !signDiff;
 }
 
 /*
