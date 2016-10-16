@@ -286,8 +286,6 @@ assert(float_i2f(-255)==test_float_i2f(-255));
 printf("Passed Test Cases for float_i2f\n");
 
 //Test Cases for float_twice
-printf("\nfloat_twice(-255.56): %0x8\n", float_twice(0xc37f8f5c));
-printf("test_float_twice(-255.56): %0x8\n", test_float_twice(0xc37f8f5c));
 /*1*/assert(float_twice(0x3f800000)==test_float_twice(0x3f800000));
 /*0*/assert(float_twice(0)==test_float_twice(0));
 /*-1*/assert(float_twice(0xbf800000)==test_float_twice(0xbf800000));

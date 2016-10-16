@@ -258,9 +258,15 @@ int fitsBits(int x, int n)
  */
 int divpwr2(int x, int n) 
 {
-  /* divide by a power of 2 by exploiting the fact that shifting left 
-  divides by 2 for each bit shifter left */
-  return (x << n);
+  /* divide by a power of 2 by exploiting the fact that shifting right 
+  divides by 2 for each bit shifted left, negative numbers have to be 
+  positive before the shift */
+  //if its negative, perform a 2's complement
+  int signBit = ((1 << 31) & x);
+  int mask = signBit >> 31;
+  int x = (x ^ mask) + signBit;
+  //shift right once you have positive number
+  return (x >> n);
 }
 
 /* 
