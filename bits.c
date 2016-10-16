@@ -159,10 +159,11 @@ int logicalShift(int x, int n)
 {
   /* determine if x is zero, then create a mask to change the possible sign 
   fill into the MSB to be zero/logical */
-  int isZero = !(n | 0x0);
+  int isZero, mask;
+  isZero = !(n | 0x0);
   x = x >> n;
   //mask has 1's where the fill bits are, and 0's everywhere else
-  int mask = (0x1 << (31+isZero)) >> (n + (~0));
+  mask = (0x1 << (31+isZero)) >> (n + (~0));
   mask = ~mask;
   return (x&mask);
 }
@@ -177,6 +178,7 @@ int logicalShift(int x, int n)
 int bitCount(int x) 
 {
   /* count the number of bits set to 1 by isolating each bit and shifting */
+  int a, b, c, d, e;
   int a = (0x55 << 8) + 0x55;         // a = 0x55555555
   a = (a << 16) + a;
   
@@ -208,8 +210,9 @@ int bitCount(int x)
 int bang(int x) 
 {
   /* computes !x by having a 1 in LSB if its 0, and 0 in the LSB if its not*/
-  int notX = ~x;
-  int negX = notX + 1;
+  int notX, negX;
+  notX = ~x;
+  negX = notX + 1;
   x = (~negX & notX)>>31;
   return x&1;
 }
@@ -241,9 +244,10 @@ int fitsBits(int x, int n)
 {
   /* find if an integer can be represented by shifting it back and forth 
   then checking if still equals the original */
-  int shift = 33 + ~n;
-  int mask = x << shift;
-  int tempX = mask >> shift;
+  int shift, mask, tempX;
+  shift = 33 + ~n;
+  mask = x << shift;
+  tempX = mask >> shift;
   return !(tempX ^ x);
 }
 
@@ -261,8 +265,9 @@ int divpwr2(int x, int n)
   divides by 2 for each bit shifted left, negative numbers have to be 
   positive before the shift */
   //if its negative, perform a 2's complement
-  int signBit = ((1 << 31) & x);
-  int mask = (signBit<<31) >> 31;
+  int signBit, mask;
+  signBit = ((1 << 31) & x);
+  mask = (signBit<<31) >> 31;
   x = (x ^ mask) + signBit;
   //shift right once you have positive number
   x = x >> n;
@@ -297,9 +302,10 @@ int negate(int x)
 int isPositive(int x) 
 {
   /* find if the input is positive by isolating the sign bit */
-  int isZero = !x;
-  int signBit = ((1 << 31) & x);
-  int isPos = !(x & (signBit));
+  int isZero, signBit, isPos;
+  isZero = !x;
+  signBit = ((1 << 31) & x);
+  isPos = !(x & (signBit));
   return isPos ^ isZero;
 }
 
@@ -343,6 +349,7 @@ int isLessOrEqual(int x, int y)
 int ilog2(int x) 
 {
   /* find log of x by finding the location of the leading 1 */
+  int a, b, c, d, e;
   
   //gets the leading bit followed by all 1's
   x = x | (x >> 1);
@@ -352,18 +359,18 @@ int ilog2(int x)
   x = x | (x >> 16);
   
   // use bitCount logic to count the number of 1's which is the floor(log(x))
-  int a = (0x55 << 8) + 0x55;         // a = 0x55555555
+  a = (0x55 << 8) + 0x55;         // a = 0x55555555
   a = (a << 16) + a;
   
-  int b = (0x33 << 8) + 0x33;         // b = 0x33333333
+  b = (0x33 << 8) + 0x33;         // b = 0x33333333
   b = (b << 16) + 0x33;
   
-  int c = (0x0F << 8) + 0x0F;         // c = 0x0F0F0F0F
+  c = (0x0F << 8) + 0x0F;         // c = 0x0F0F0F0F
   c = (c << 16) + 0x0F;
   
-  int d = (0xFF << 24) + 0xFF;        // d = 0x00FF00FF
+  d = (0xFF << 24) + 0xFF;        // d = 0x00FF00FF
   
-  int e = (0xFF << 8) + 0xFF;         // e = 0x0000FFFF
+  e = (0xFF << 8) + 0xFF;         // e = 0x0000FFFF
   
   x = (x & a) + ((x >> 1) & a);
   x = (x & b) + ((x >> 2) & b);
@@ -397,9 +404,11 @@ unsigned float_neg(unsigned uf)
   /* find the negative value of the input by flipping the sign bit of the 
   floating point representation */
   
+  int expMask, mantissaMask;
+  
   //testing if NaN (all 1's in exponent AND any 1's in the mantissa
-  int expMask = (0xEF << 25);
-  int mantissaMask = (0x1 << 23);
+  expMask = (0xEF << 25);
+  mantissaMask = (0x1 << 23);
   if( ((uf & expMask) == expMask)  &&  ((mantissaMask & uf) != 0) )
       return uf;
   // if it is a number, return the negative
@@ -420,8 +429,9 @@ unsigned float_i2f(int x)
 {
   /* turn an int into a float by creating the sign, exponent, and mantissa 
   segments, then combining them into the new floating point number rep */
+  int newFloat, sign, exponent, leadingOneBit, mask, mantissa, mantissaMask;
   
-  int newFloat = 0;
+  newFloat = 0;
   
   //check for 0
   if( x == 0 )
@@ -436,9 +446,9 @@ unsigned float_i2f(int x)
   }
   
   //create exponent
-  int exponent = 0;
-  int leadingOneBit = 31;
-  int mask = 0x40000000;
+  exponent = 0;
+  leadingOneBit = 31;
+  mask = 0x40000000;
   //loop until the first 1 from the MSB is found
   while( !(mask & x) == 1 && leadingOneBit > 1) {
       leadingOneBit --;
@@ -450,8 +460,8 @@ unsigned float_i2f(int x)
   exponent = exponent << 23;
   
   //create mantissa
-  int mantissa = 0;
-  int mantissaMask = ~((signed)0x80000000 >> (32-leadingOneBit));
+  mantissa = 0;
+  mantissaMask = ~((signed)0x80000000 >> (32-leadingOneBit));
   mantissa = mantissaMask & x;
   mantissa = mantissa << (24-leadingOneBit);
   
@@ -479,9 +489,11 @@ unsigned float_twice(unsigned uf)
   /* double the argument by extracting the exponent, adding 1, then 
   replacing the old exponent with the new one */
   
+  int expMask, mantissaMask, exp, newExp;
+  
   //testing if NaN (all 1's in exponent AND any 1's in the mantissa
-  int expMask = (0xEF << 25);
-  int mantissaMask = (0x1 << 23);
+  expMask = (0xEF << 25);
+  mantissaMask = (0x1 << 23);
   if( ((uf & expMask) == expMask)  &&  ((mantissaMask & uf) != 0) )
       return uf;
       
@@ -490,8 +502,8 @@ unsigned float_twice(unsigned uf)
       return 0;    
 
   //retrieve the exponent and increment
-  int exp = 0x7F800000 & uf;
-  int newExp = exp + 0x00800000;
+  exp = 0x7F800000 & uf;
+  newExp = exp + 0x00800000;
   uf = uf & 0x803FFFFF;
   return newExp | uf;
 }
