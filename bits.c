@@ -208,7 +208,7 @@ int divpwr2(int x, int n)
   
   signBit = ((1 << 31) & x);
   printf("signBit: %x\n", signBit);
-  mask = (signBit<<31) >> 31;
+  mask = signBit >> 31;
   printf("mask: %x\n", mask);
   x = (x ^ mask) + signBit;
   printf("x after 2's before shift: %x\n", x);
