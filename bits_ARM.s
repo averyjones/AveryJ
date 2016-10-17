@@ -243,7 +243,7 @@ isLessOrEqual_ARM:
 
 	@ r0 = x, r1 = y, r2 = difference, r3 = signDiff, r4 = (~x + 1), r5 = ~x
 	MVN  r5, r0				@ difference = y + (~x + 1)
-	ADD  r4,  r0, #1
+	ADD  r4,  r5, #1
 	ADD  r2, r4, r1
 	LSR  r2, r2, #31 		@ signDiff = (difference >> 31) & 1
 	AND  r3, r2, #1
