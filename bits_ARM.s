@@ -248,12 +248,13 @@ isLessOrEqual_ARM:
 	LSR  r2, r2, #31 		@ signDiff = (difference >> 31) & 1
 	AND  r3, r2, #1
 	
-	@ r5 = ~x, r6 = -x, r7 = ~(-x)
-	ADD  r6, r5, #1			@ return !signDiff
-	MVN  r7, r6
-	AND  r0, r7, r5
-	LSR  r0, r0, #31
-	AND  r0, r0, #1
+	@ r3 = signDiff, r6 = ~signDiff, r7 = -signDiff, r8 = ~(-signDiff)
+	MVN  r6, r3					@ return !signDiff
+	ADD  r7, r3, #1			
+	MVN  r8, r7
+	AND  r3, r8, r6
+	LSR  r3, r3, #31
+	AND  r0, r3, #1
 	
     
     @ restore caller's registers
