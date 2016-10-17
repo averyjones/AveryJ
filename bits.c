@@ -433,8 +433,13 @@ unsigned float_twice(unsigned uf)
   //retrieve the exponent and increment
   exp = 0x7F800000 & uf;
   newExp = exp + 0x00800000;
-  uf = uf & 0x803FFFFF;
-  return newExp | uf;
+  uf_no_exp = uf & 0x803FFFFF;
+  ufTwice = newExp | uf_no_exp;
+  
+  //check if the new number is still a number, if not return new number
+  if( ((ufTwice & expMask) == expMask)  &&  ((mantissaMask & ufTwice) != 0) )
+      return uf;
+  return ufTwice
 }
 
 
