@@ -418,7 +418,7 @@ unsigned float_twice(unsigned uf)
   /* double the argument by extracting the exponent, adding 1, then 
   replacing the old exponent with the new one */
   
-  int expMask, mantissaMask, exp, newExp;
+  int expMask, mantissaMask, exp, newExp, uf_no_exp, ufTwice;
   
   //testing if NaN (all 1's in exponent AND any 1's in the mantissa
   expMask = (0xEF << 25);
@@ -439,7 +439,7 @@ unsigned float_twice(unsigned uf)
   //check if the new number is still a number, if not return new number
   if( ((ufTwice & expMask) == expMask)  &&  ((mantissaMask & ufTwice) != 0) )
       return uf;
-  return ufTwice
+  return ufTwice;
 }
 
 
