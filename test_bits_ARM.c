@@ -143,8 +143,8 @@ assert(negate_ARM(0)==negate_ARM(0));
 printf("Passed Test Cases for negate\n");
 
 //Test Cases for isLessOrEqual
-printf("isLess_ARM(4,5): %x\n", isLessOrEqual_ARM(4,5));
-printf("test_isLess_ARM(4,5): %x\n", test_isLessOrEqual_ARM(4,5));
+printf("isLess_ARM(5,4): %x\n", isLessOrEqual_ARM(5,4));
+printf("test_isLess_ARM(5,4): %x\n", test_isLessOrEqual_ARM(5,4));
 assert(isLessOrEqual_ARM(4,5)==test_isLessOrEqual_ARM(4,5));
 assert(isLessOrEqual_ARM(0,0)==test_isLessOrEqual_ARM(0,0));
 assert(isLessOrEqual_ARM(-4,5)==test_isLessOrEqual_ARM(-4,5));

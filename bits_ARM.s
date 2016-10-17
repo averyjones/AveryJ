@@ -250,7 +250,7 @@ isLessOrEqual_ARM:
 	
 	@ r3 = signDiff, r6 = ~signDiff, r7 = -signDiff, r8 = ~(-signDiff)
 	MVN  r6, r3					@ return !signDiff
-	ADD  r7, r3, #1			
+	ADD  r7, r6, #1			
 	MVN  r8, r7
 	AND  r3, r8, r6
 	LSR  r3, r3, #31
